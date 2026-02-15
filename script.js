@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const mEnd = (y === endYear) ? endMonth : 11;
         for (let m = mStart; m <= mEnd; m++) {
             const key = monthNames[m] + y;
-            months.push({ label: monthNames[m] + ' ' + y, file: photosAvailable[key] ? 'photos/' + key + '.jpeg' : null });
+            if (photosAvailable[key]) {
+                months.push({ label: monthNames[m] + ' ' + y, file: 'photos/' + key + '.jpeg' });
+            }
         }
     }
 
@@ -49,11 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         currentIndex = i;
         const item = months[i];
         monthEl.textContent = item.label;
-        if (item.file) {
-            containerEl.innerHTML = '<img src="' + item.file + '" alt="' + item.label + ' meetup photo">';
-        } else {
-            containerEl.innerHTML = '<span class="no-photo">No photo for this month</span>';
-        }
+        containerEl.innerHTML = '<img src="' + item.file + '" alt="' + item.label + ' meetup photo">';
     }
 
     document.getElementById('galleryPrev').addEventListener('click', () => {
@@ -64,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Start at most recent photo
-    for (let i = months.length - 1; i >= 0; i--) {
-        if (months[i].file) { currentIndex = i; break; }
-    }
+    currentIndex = months.length - 1;
     showMonth(currentIndex);
 });
