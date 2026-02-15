@@ -1,4 +1,28 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Hero background cycling
+    const heroPhotos = [
+        'photos/September2024.jpeg', 'photos/October2024.jpeg', 'photos/November2024.jpeg',
+        'photos/January2025.jpeg', 'photos/February2025.jpeg', 'photos/March2025.jpeg',
+        'photos/April2025.jpeg', 'photos/September2025.jpeg', 'photos/October2025.jpeg',
+        'photos/November2025.jpeg', 'photos/December2025.jpeg'
+    ];
+    const heroBg = document.getElementById('heroBg');
+    // Pick a random starting photo
+    let heroIndex = Math.floor(Math.random() * heroPhotos.length);
+    heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
+    heroBg.classList.add('fade-in');
+
+    setInterval(function() {
+        heroBg.classList.remove('fade-in');
+        heroBg.classList.add('fade-out');
+        setTimeout(function() {
+            heroIndex = (heroIndex + 1) % heroPhotos.length;
+            heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
+            heroBg.classList.remove('fade-out');
+            heroBg.classList.add('fade-in');
+        }, 1500);
+    }, 8000);
+
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
