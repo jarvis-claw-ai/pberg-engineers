@@ -50,85 +50,63 @@
         </div>
     </nav>
 
-    <!-- Recent Talks Section -->
+    <!-- Lightning Talks Section -->
     <section class="talks" id="talks">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Recent Talks</h2>
+                <h2 class="section-title">Lightning Talks</h2>
                 <p class="section-subtitle">Knowledge sharing from our community</p>
             </div>
-            <div class="talks-grid">
-                <div class="talk-card" data-aos="fade-up">
-                    <div class="talk-header">
-                        <div class="talk-speaker">Vladimir</div>
-                        <div class="talk-type">Architecture</div>
-                    </div>
-                    <h3 class="talk-title">Entity-Component-System Architecture</h3>
-                    <p class="talk-description">Overview of ECS for game systems and modern application architecture patterns.</p>
-                    <a href="https://unity.com/ecs" class="talk-link" target="_blank" rel="noopener">
-                        <span>Learn More</span>
-                        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="talk-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="talk-header">
-                        <div class="talk-speaker">Johannes</div>
-                        <div class="talk-type">Platform</div>
-                    </div>
-                    <h3 class="talk-title">Trust and Authenticity in GenAI World</h3>
-                    <p class="talk-description">A social platform to ensure trust and authenticity with credibility verification systems.</p>
-                    <div class="talk-link disabled">
-                        <span>Platform Demo</span>
-                    </div>
-                </div>
-
-                <div class="talk-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="talk-header">
-                        <div class="talk-speaker">Jonas</div>
-                        <div class="talk-type">DevOps</div>
-                    </div>
-                    <h3 class="talk-title">Introduction to Kubernetes</h3>
-                    <p class="talk-description">Lightning talk covering K8s fundamentals and container orchestration basics.</p>
-                    <a href="https://www.edx.org/learn/kubernetes/the-linux-foundation-introduction-to-kubernetes" class="talk-link" target="_blank" rel="noopener">
-                        <span>Learn More</span>
-                        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="talk-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="talk-header">
-                        <div class="talk-speaker">Evgenii</div>
-                        <div class="talk-type">Architecture</div>
-                    </div>
-                    <h3 class="talk-title">Transactional Outbox Pattern</h3>
-                    <p class="talk-description">Design pattern for handling dual-write operations in distributed systems.</p>
-                    <a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html" class="talk-link" target="_blank" rel="noopener">
-                        <span>Learn More</span>
-                        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </a>
-                </div>
-
-                <div class="talk-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="talk-header">
-                        <div class="talk-speaker">Vladimir</div>
-                        <div class="talk-type">AI/ML</div>
-                    </div>
-                    <h3 class="talk-title">Running LLMs Locally with Ollama</h3>
-                    <p class="talk-description">Introduction to Ollama for convenient local LLM deployment and experimentation.</p>
-                    <a href="https://ollama.ai/" class="talk-link" target="_blank" rel="noopener">
-                        <span>Learn More</span>
-                        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="m9 18 6-6-6-6"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="talks-table-wrapper">
+                <table class="talks-table">
+                    <thead>
+                        <tr><th>Month</th><th>Speaker</th><th>Topic</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr class="month-group"><td colspan="3">December 2025</td></tr>
+                        <tr><td>Dec 2025</td><td>Parthipan</td><td>Preventing prompt injections with LLM as a judge approach</td></tr>
+                        <tr><td>Dec 2025</td><td>Daniel</td><td>Token length calculation when running local LLMs</td></tr>
+                        <tr class="month-group"><td colspan="3">November 2025</td></tr>
+                        <tr><td>Nov 2025</td><td>Stefan</td><td>What is a token in an LLM?</td></tr>
+                        <tr class="month-group"><td colspan="3">October 2025</td></tr>
+                        <tr><td>Oct 2025</td><td>Parthipan</td><td>Defining SLIs and SLOs with AWS CloudWatch alarms</td></tr>
+                        <tr class="month-group"><td colspan="3">September 2025</td></tr>
+                        <tr><td>Sep 2025</td><td>Matthias</td><td>Notion &amp; me - my first toxic relationship</td></tr>
+                        <tr><td>Sep 2025</td><td>Parthipan</td><td>The Garbage Collector weirdness on low-memory AWS Lambda running Node.js</td></tr>
+                        <tr class="month-group"><td colspan="3">August 2025</td></tr>
+                        <tr><td>Aug 2025</td><td>Parthipan</td><td>Using Mathematics in Everyday Engineering Decisions</td></tr>
+                        <tr><td>Aug 2025</td><td>Didi</td><td>AI is taking care of the sweatshop work - Let's become coding artisans again</td></tr>
+                        <tr class="month-group"><td colspan="3">July 2025</td></tr>
+                        <tr><td>Jul 2025</td><td>Parthipan</td><td>Integrating AWS managed Distro for Open Telemetry in Lambda architectures</td></tr>
+                        <tr><td>Jul 2025</td><td>Greg</td><td>Responsible AI - Journey from science to development and audit</td></tr>
+                        <tr class="month-group"><td colspan="3">May 2025</td></tr>
+                        <tr><td>May 2025</td><td>Bram</td><td>Experiences with employer-of-record hiring</td></tr>
+                        <tr><td>May 2025</td><td>Parthipan</td><td>Integrating MCP servers running within WSL with Claude desktop</td></tr>
+                        <tr class="month-group"><td colspan="3">April 2025</td></tr>
+                        <tr><td>Apr 2025</td><td>Jonas</td><td>Python, Pydantic, and LLM Structured Outputs</td></tr>
+                        <tr><td>Apr 2025</td><td>Aditya</td><td>Building a simple AI-powered JSON Parser</td></tr>
+                        <tr><td>Apr 2025</td><td>George</td><td>Dataloader Pattern in GraphQL</td></tr>
+                        <tr class="month-group"><td colspan="3">March 2025</td></tr>
+                        <tr><td>Mar 2025</td><td>Davide</td><td>Breaking into My Own Airbnb Account (By Mistake!)</td></tr>
+                        <tr><td>Mar 2025</td><td>Aditya</td><td>Self-hosting open source alternatives and game servers</td></tr>
+                        <tr><td>Mar 2025</td><td>Darius</td><td>How self-custodial cryptocurrency wallets are changing</td></tr>
+                        <tr class="month-group"><td colspan="3">February 2025</td></tr>
+                        <tr><td>Feb 2025</td><td>Jonas</td><td>Using Langfuse as a prompt CRM</td></tr>
+                        <tr><td>Feb 2025</td><td>Sam</td><td>Why documentation sucks</td></tr>
+                        <tr><td>Feb 2025</td><td>Daniel</td><td>Hacking professional MIDI Keyboards for Fun &amp; Profit</td></tr>
+                        <tr><td>Feb 2025</td><td>Janes</td><td>Building Scalable Search Experiences using OpenSearch/ElasticSearch</td></tr>
+                        <tr class="month-group"><td colspan="3">January 2025</td></tr>
+                        <tr><td>Jan 2025</td><td>Jonas</td><td>Inspiration for your first few 3D printing projects</td></tr>
+                        <tr><td>Jan 2025</td><td>Lev</td><td>Locks history from interception block to modern distributed locking strategies</td></tr>
+                        <tr><td>Jan 2025</td><td>Ryan</td><td>MTTR - Monitoring and High Availability for Services</td></tr>
+                        <tr class="month-group"><td colspan="3">Pre-2025</td></tr>
+                        <tr><td>Pre-2025</td><td>Vladimir</td><td>Entity-Component-System Architecture</td></tr>
+                        <tr><td>Pre-2025</td><td>Johannes</td><td>Trust and Authenticity in GenAI World</td></tr>
+                        <tr><td>Pre-2025</td><td>Jonas</td><td>Introduction to Kubernetes</td></tr>
+                        <tr><td>Pre-2025</td><td>Evgenii</td><td>Transactional Outbox Pattern</td></tr>
+                        <tr><td>Pre-2025</td><td>Vladimir</td><td>Running LLMs Locally with Ollama</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -140,43 +118,13 @@
                 <h2 class="section-title">Our Community</h2>
                 <p class="section-subtitle">Moments from our meetups</p>
             </div>
-            <div class="gallery-grid">
-                <div class="gallery-item" data-aos="zoom-in">
-                    <img src="meeting1.jpeg" alt="PBerg Engineers meetup - Group discussion" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Learning Together</div>
-                    </div>
+            <div class="gallery-viewer">
+                <button class="gallery-nav gallery-prev" id="galleryPrev">&#8592;</button>
+                <div class="gallery-display" id="galleryDisplay">
+                    <h3 class="gallery-month" id="galleryMonth"></h3>
+                    <div class="gallery-image-container" id="galleryImageContainer"></div>
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="meeting2.jpeg" alt="PBerg Engineers meetup - Presentation" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Knowledge Sharing</div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="meeting3.jpeg" alt="PBerg Engineers meetup - Networking" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Building Connections</div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="meetup1.png" alt="PBerg Engineers meetup event" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Community Events</div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="meetup2.png" alt="PBerg Engineers meetup gathering" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Casual Atmosphere</div>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-                    <img src="meetup3.png" alt="PBerg Engineers meetup discussion" loading="lazy">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Deep Conversations</div>
-                    </div>
-                </div>
+                <button class="gallery-nav gallery-next" id="galleryNext">&#8594;</button>
             </div>
         </div>
     </section>
@@ -189,7 +137,7 @@
                 <p class="section-subtitle">Café Chagall in the heart of Prenzlauer Berg</p>
             </div>
             <div class="location-content">
-                <div class="location-info" data-aos="fade-right">
+                <div class="location-info">
                     <div class="location-details">
                         <h3>Café Chagall</h3>
                         <p>A cozy venue perfect for our relaxed meetups. Great drinks, comfortable seating, and the ideal atmosphere for technical discussions and networking.</p>
@@ -218,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="location-map" data-aos="fade-left">
+                <div class="location-map">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.114695457926!2d13.41008211330983!3d52.53135897194755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e1d5356ff25%3A0x567aeb88d04ddc5f!2sCaf%C3%A9%20Chagall!5e0!3m2!1sen!2sde!4v1690273717676!5m2!1sen!2sde"
                         width="100%" 
@@ -241,7 +189,7 @@
                 <p class="section-subtitle">Connect with fellow engineers</p>
             </div>
             <div class="community-grid">
-                <div class="community-card meetup-card" data-aos="fade-up">
+                <div class="community-card meetup-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M8 2v4"/>
@@ -265,7 +213,7 @@
                     </a>
                 </div>
 
-                <div class="community-card whatsapp-card news" data-aos="fade-up" data-aos-delay="100">
+                <div class="community-card whatsapp-card news">
                     <div class="card-icon">
                         <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
                     </div>
@@ -279,7 +227,7 @@
                     </a>
                 </div>
 
-                <div class="community-card whatsapp-card discuss" data-aos="fade-up" data-aos-delay="200">
+                <div class="community-card whatsapp-card discuss">
                     <div class="card-icon">
                         <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
                     </div>
@@ -293,7 +241,19 @@
                     </a>
                 </div>
 
-                <div class="community-card github-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="community-card newsletter-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                    </div>
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get meetup updates and community news delivered to your inbox.</p>
+                    <div id="form-acm_33489"></div>
+                </div>
+
+                <div class="community-card github-card">
                     <div class="card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
@@ -333,5 +293,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script type="text/javascript" src="https://fuf-emailing.emlsend.com/newform/dynamic/js/lytLpUhwzAsBnNcwOOgsDBlvPGaFCC5dwnTcJl/33489/"></script>
 </body>
 </html>
