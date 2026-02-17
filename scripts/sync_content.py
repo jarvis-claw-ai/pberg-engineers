@@ -130,6 +130,21 @@ def git(args, cwd=None):
     return result.stdout.strip()
 
 
+
+
+def ensure_clean_state():
+    """Ensure repo is in a clean state by committing any pending changes."""
+    try:
+        status = git(["status", "--porcelain"])
+        if status.strip():
+            log("Found uncommitted changes, committing them first...")
+            git(["add", "-A"])
+            now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+            git(["commit", "-m", f"Auto-commit pending changes before sync ({now})"])
+            log("Committed pending changes")
+    except Exception as e:
+        log(f"Warning: Could not check/commit pending changes: {e}")
+
 def current_month_label():
     """Return e.g. 'February 2026' for photos.json."""
     now = datetime.datetime.now()
@@ -296,12 +311,9 @@ def sync_talks():
 # ============================================================================
 
 def git_sync(changed_files):
-    """Pull, add changed files, commit, and push."""
+    """Add, commit, and push changed files."""
     if not changed_files:
         return
-
-    log("Pulling latest from origin...")
-    git(["pull", "--rebase"])
 
     for f in changed_files:
         git(["add", f])
@@ -335,6 +347,11 @@ def main():
         log(f"Repo:     {REPO_DIR}")
         log(f"Photos:   {INCOMING_PHOTOS_DIR}")
         log(f"Talks:    {TALKS_FILE_PATH}")
+
+        # Ensure clean state and pull latest before processing
+        ensure_clean_state()
+        log("Pulling latest from origin...")
+        git(["pull", "--rebase"])
 
         all_changed = []
 
