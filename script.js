@@ -1,27 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Hero background cycling
-    const heroPhotos = [
-        'photos/September2024.jpeg', 'photos/October2024.jpeg', 'photos/November2024.jpeg',
-        'photos/January2025.jpeg', 'photos/February2025.jpeg', 'photos/March2025.jpeg',
-        'photos/April2025.jpeg', 'photos/September2025.jpeg', 'photos/October2025.jpeg',
-        'photos/November2025.jpeg', 'photos/December2025.jpeg'
-    ];
-    const heroBg = document.getElementById('heroBg');
-    // Pick a random starting photo
-    let heroIndex = Math.floor(Math.random() * heroPhotos.length);
-    heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
-    heroBg.classList.add('fade-in');
-
-    setInterval(function() {
-        heroBg.classList.remove('fade-in');
-        heroBg.classList.add('fade-out');
-        setTimeout(function() {
-            heroIndex = (heroIndex + 1) % heroPhotos.length;
-            heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
-            heroBg.classList.remove('fade-out');
-            heroBg.classList.add('fade-in');
-        }, 1500);
-    }, 8000);
+    // Utility: convert a month label like "September 2024" to a file path like "photos/September2024.jpeg"
+    function monthLabelToPath(label) {
+        return 'photos/' + label.replace(' ', '') + '.jpeg';
+    }
 
     // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
@@ -44,48 +25,72 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Photo Gallery
-    const months = [];
-    const startYear = 2024, startMonth = 8; // Sep 2024 = index 8
-    const endYear = 2025, endMonth = 11; // Dec 2025 = index 11
-    const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    // Load photos data and initialize hero background + gallery
+    fetch('data/photos.json')
+        .then(res => res.json())
+        .then(function(photoLabels) {
+            const months = photoLabels.map(label => ({
+                label: label,
+                file: monthLabelToPath(label)
+            }));
 
-    const photosAvailable = {
-        'September2024': true, 'October2024': true, 'November2024': true,
-        'January2025': true, 'February2025': true, 'March2025': true, 'April2025': true,
-        'September2025': true, 'October2025': true, 'November2025': true, 'December2025': true
-    };
+            // Hero background cycling
+            const heroPhotos = months.map(m => m.file);
+            const heroBg = document.getElementById('heroBg');
+            let heroIndex = Math.floor(Math.random() * heroPhotos.length);
+            heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
+            heroBg.classList.add('fade-in');
 
-    for (let y = startYear; y <= endYear; y++) {
-        const mStart = (y === startYear) ? startMonth : 0;
-        const mEnd = (y === endYear) ? endMonth : 11;
-        for (let m = mStart; m <= mEnd; m++) {
-            const key = monthNames[m] + y;
-            if (photosAvailable[key]) {
-                months.push({ label: monthNames[m] + ' ' + y, file: 'photos/' + key + '.jpeg' });
+            setInterval(function() {
+                heroBg.classList.remove('fade-in');
+                heroBg.classList.add('fade-out');
+                setTimeout(function() {
+                    heroIndex = (heroIndex + 1) % heroPhotos.length;
+                    heroBg.style.backgroundImage = 'url(' + heroPhotos[heroIndex] + ')';
+                    heroBg.classList.remove('fade-out');
+                    heroBg.classList.add('fade-in');
+                }, 1500);
+            }, 8000);
+
+            // Photo Gallery
+            let currentIndex = months.length - 1;
+            const monthEl = document.getElementById('galleryMonth');
+            const containerEl = document.getElementById('galleryImageContainer');
+
+            function showMonth(i) {
+                currentIndex = i;
+                const item = months[i];
+                monthEl.textContent = item.label;
+                containerEl.innerHTML = '<img src="' + item.file + '" alt="' + item.label + ' meetup photo">';
             }
-        }
-    }
 
-    let currentIndex = 0;
-    const monthEl = document.getElementById('galleryMonth');
-    const containerEl = document.getElementById('galleryImageContainer');
+            document.getElementById('galleryPrev').addEventListener('click', () => {
+                showMonth((currentIndex - 1 + months.length) % months.length);
+            });
+            document.getElementById('galleryNext').addEventListener('click', () => {
+                showMonth((currentIndex + 1) % months.length);
+            });
 
-    function showMonth(i) {
-        currentIndex = i;
-        const item = months[i];
-        monthEl.textContent = item.label;
-        containerEl.innerHTML = '<img src="' + item.file + '" alt="' + item.label + ' meetup photo">';
-    }
+            showMonth(currentIndex);
+        });
 
-    document.getElementById('galleryPrev').addEventListener('click', () => {
-        showMonth((currentIndex - 1 + months.length) % months.length);
-    });
-    document.getElementById('galleryNext').addEventListener('click', () => {
-        showMonth((currentIndex + 1) % months.length);
-    });
-
-    // Start at most recent photo
-    currentIndex = months.length - 1;
-    showMonth(currentIndex);
+    // Load talks data and populate the table
+    fetch('data/talks.json')
+        .then(res => res.json())
+        .then(function(talks) {
+            const tbody = document.getElementById('talksBody');
+            talks.forEach(function(talk) {
+                const tr = document.createElement('tr');
+                const tdMonth = document.createElement('td');
+                const tdSpeaker = document.createElement('td');
+                const tdTopic = document.createElement('td');
+                tdMonth.textContent = talk.month;
+                tdSpeaker.textContent = talk.speaker;
+                tdTopic.textContent = talk.topic;
+                tr.appendChild(tdMonth);
+                tr.appendChild(tdSpeaker);
+                tr.appendChild(tdTopic);
+                tbody.appendChild(tr);
+            });
+        });
 });
