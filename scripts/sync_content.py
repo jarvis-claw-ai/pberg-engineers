@@ -61,6 +61,9 @@ import sys
 
 from pathlib import Path
 
+sys.path.insert(0, "/root/scripts")
+from tg_notify import tg_send, tg_error
+
 try:
     from PIL import Image
 except ImportError:
@@ -364,6 +367,36 @@ def main():
         if all_changed:
             git_sync(all_changed)
             log(f"Done. {len(all_changed)} file(s) synced.")
+
+            # Build notification
+            n_photos = len(photo_changes)
+            n_talks = len(talk_changes)
+            parts = []
+            if n_photos:
+                parts.append(f"📷 <b>{n_photos} photo file(s)</b> updated")
+            if n_talks:
+                # Re-read talks.json to show what was added
+                try:
+                    import json as _json
+                    talks_json = _json.loads(
+                        (Path(REPO_DIR) / "data" / "talks.json").read_text()
+                    )
+                    recent = talks_json[:n_talks // 2 or 1]  # roughly the new ones
+                    talk_lines = "\n".join(
+                        f"  • {t['speaker']}: {t['topic']}" for t in recent
+                    )
+                    parts.append(f"🎤 <b>{n_talks // 2 or 1} new talk(s)</b>:\n{talk_lines}")
+                except Exception:
+                    parts.append(f"🎤 <b>talks.json</b> updated")
+
+            file_lines = "\n".join(f"  • {f}" for f in all_changed)
+            tg_send(
+                f"🏗️ <b>PBerg Engineers – content synced</b>\n\n"
+                + "\n".join(parts) + "\n\n"
+                f"📁 Changed files:\n{file_lines}\n\n"
+                f"🚀 Pushed → GitHub Pages deploying\n"
+                f"🔗 <a href='https://jarvis-claw-ai.github.io/pberg-engineers/'>pberg-engineers site</a>"
+            )
         else:
             log("No changes detected.")
 
@@ -371,6 +404,7 @@ def main():
 
     except Exception as e:
         log(f"FATAL ERROR: {e}")
+        tg_error("PBerg Engineers – Content Sync", str(e))
         sys.exit(1)
 
     finally:
