@@ -1,5 +1,20 @@
 [
   {
+    "month": "Mar 2026",
+    "speaker": "Clemens",
+    "topic": "Experience using https://www.pencil.dev/ or “a backend developer friendly tool to build fancy UIs”"
+  },
+  {
+    "month": "Mar 2026",
+    "speaker": "Parthipan",
+    "topic": "Handling PII data in a compliant manner on distributed NoSQL datastores"
+  },
+  {
+    "month": "Mar 2026",
+    "speaker": "Jonas",
+    "topic": "How OpenClaw hosts my Mini-Apps (without breaking the bank)"
+  },
+  {
     "month": "Feb 2026",
     "speaker": "Clemens",
     "topic": "OpenClaw"
