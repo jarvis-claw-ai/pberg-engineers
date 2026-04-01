@@ -1,5 +1,15 @@
 [
   {
+    "month": "Apr 2026",
+    "speaker": "Alshay",
+    "topic": "A rant about standup meetings"
+  },
+  {
+    "month": "Apr 2026",
+    "speaker": "Cesar",
+    "topic": "Voit"
+  },
+  {
     "month": "Mar 2026",
     "speaker": "Clemens",
     "topic": "Experience using https://www.pencil.dev/ or “a backend developer friendly tool to build fancy UIs”"
