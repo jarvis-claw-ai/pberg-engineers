@@ -58,6 +58,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 
 from pathlib import Path
 
@@ -116,21 +117,34 @@ def log(message):
     print(f"[{timestamp}] {message}")
 
 
+_NETWORK_ERRORS = (
+    "connection reset", "unable to access", "could not resolve",
+    "recv failure", "timed out", "ssl", "remote end hung up",
+    "the remote end hung up", "early eof", "index-pack failed",
+)
+
+
 def git(args, cwd=None):
-    """Run a git command and return stdout. Raises on failure."""
-    result = subprocess.run(
-        ["git"] + args,
-        cwd=cwd or REPO_DIR,
-        capture_output=True,
-        text=True,
-    )
-    if result.returncode != 0:
+    """Run a git command and return stdout. Retries up to 3× on network errors."""
+    for attempt in range(1, 4):
+        result = subprocess.run(
+            ["git"] + args,
+            cwd=cwd or REPO_DIR,
+            capture_output=True,
+            text=True,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+        err = (result.stderr or "").lower()
+        if any(k in err for k in _NETWORK_ERRORS) and attempt < 3:
+            log(f"[GIT] Network error on attempt {attempt}/3, retrying in 10s…")
+            time.sleep(10)
+            continue
         raise RuntimeError(
             f"git {' '.join(args)} failed (exit {result.returncode}):\n"
             f"  stdout: {result.stdout.strip()}\n"
             f"  stderr: {result.stderr.strip()}"
         )
-    return result.stdout.strip()
 
 
 
