@@ -1,5 +1,15 @@
 [
   {
+    "month": "May 2026",
+    "speaker": "Sam",
+    "topic": "Mental models for learning functional programming"
+  },
+  {
+    "month": "May 2026",
+    "speaker": "Manu",
+    "topic": "Reverse engineering Claude Code and building a bespoke agent harness"
+  },
+  {
     "month": "Apr 2026",
     "speaker": "Cesar",
     "topic": "Voit"
