@@ -1,5 +1,20 @@
 [
   {
+    "month": "Jun 2026",
+    "speaker": "Jonas",
+    "topic": "You do not need a TUI"
+  },
+  {
+    "month": "Jun 2026",
+    "speaker": "Lukas",
+    "topic": "Fixing the pressure valve in my coffee machine"
+  },
+  {
+    "month": "Jun 2026",
+    "speaker": "Matthias",
+    "topic": "Agent memory with hindsight"
+  },
+  {
     "month": "May 2026",
     "speaker": "Sam",
     "topic": "Mental models for learning functional programming"
