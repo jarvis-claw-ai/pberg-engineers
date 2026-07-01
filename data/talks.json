@@ -1,5 +1,15 @@
 [
   {
+    "month": "Jul 2026",
+    "speaker": "Jonas",
+    "topic": "Intro to Elixir"
+  },
+  {
+    "month": "Jul 2026",
+    "speaker": "Clemens",
+    "topic": "Screening 1000 CVs"
+  },
+  {
     "month": "Jun 2026",
     "speaker": "Jonas",
     "topic": "You do not need a TUI"
